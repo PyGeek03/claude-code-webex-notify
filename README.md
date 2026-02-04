@@ -145,7 +145,7 @@ Add to your `~/.claude/settings.json`:
 |--------------|-----------------------|-----------------------------------------------|---------------------------------------------|
 | TIMEOUT      | notify-if-away.sh     | 60                                            | Seconds to wait before sending notification |
 | WEBHOOK_URL  | notify-if-away.sh     | -                                             | Your webhook URL                            |
-| Message text | notify-if-away.sh     | "Claude Code needs your input to proceed"    | Notification message                        |
+| Message text | notify-if-away.sh     | "Claude Code needs your input to proceed"     | Notification message                        |
 
 ## Testing
 
