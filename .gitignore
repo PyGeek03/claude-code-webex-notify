@@ -1,0 +1,8 @@
+# Marker files
+session_*
+
+# macOS
+.DS_Store
+
+# Backup files
+*.bak
