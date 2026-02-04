@@ -9,34 +9,59 @@ echo "Claude Code Webhook Notifications Installer"
 echo "============================================"
 echo
 
+# Step 1: Get webhook URL first
+echo "Step 1: Webhook URL"
+echo "-------------------"
+echo "You need a webhook URL to receive notifications."
+echo
+echo "To create a WebEx webhook:"
+echo "  1. Go to https://apphub.webex.com/applications/incoming-webhooks-cisco-systems-38054-23307-75252"
+echo "  2. Click 'Connect' and sign in"
+echo "  3. Enter a name (e.g., 'Claude Code Alerts')"
+echo "  4. Select a Space for notifications"
+echo "  5. Click 'Add' and copy the webhook URL"
+echo
+echo "For other services (Slack, Discord, ntfy.sh), see README.md"
+echo
+read -p "Enter your webhook URL (or press Enter to skip): " WEBHOOK_URL
+
+if [ -z "$WEBHOOK_URL" ]; then
+  echo
+  echo "No webhook URL provided. You can set it later by editing:"
+  echo "  $INSTALL_DIR/notify-if-away.sh"
+  echo
+  read -p "Continue installation anyway? [y/N]: " CONTINUE
+  if [[ ! "$CONTINUE" =~ ^[Yy]$ ]]; then
+    echo "Installation cancelled."
+    exit 0
+  fi
+fi
+
+echo
+
 # Check for jq
+echo "Checking dependencies..."
 if ! command -v jq &> /dev/null; then
   echo "Error: jq is required but not installed."
   echo "Install with: brew install jq (macOS) or apt install jq (Linux)"
   exit 1
 fi
+echo "  jq: OK"
 
 # Create install directory
-echo "Creating $INSTALL_DIR..."
+echo
+echo "Installing scripts to $INSTALL_DIR..."
 mkdir -p "$INSTALL_DIR"
 
 # Copy scripts
-echo "Copying scripts..."
 cp "$SCRIPT_DIR/scripts/notify-if-away.sh" "$INSTALL_DIR/"
 cp "$SCRIPT_DIR/scripts/cleanup-marker.sh" "$INSTALL_DIR/"
 chmod +x "$INSTALL_DIR"/*.sh
 
-# Prompt for webhook URL
-echo
-read -p "Enter your webhook URL: " WEBHOOK_URL
-
-if [ -z "$WEBHOOK_URL" ]; then
-  echo "Warning: No webhook URL provided. Edit $INSTALL_DIR/notify-if-away.sh manually."
-else
-  # Update the webhook URL in the script
+# Configure webhook URL if provided
+if [ -n "$WEBHOOK_URL" ]; then
   sed -i.bak "s|YOUR_WEBHOOK_URL|$WEBHOOK_URL|g" "$INSTALL_DIR/notify-if-away.sh"
   rm -f "$INSTALL_DIR/notify-if-away.sh.bak"
-  echo "Webhook URL configured."
 fi
 
 # Prompt for timeout
