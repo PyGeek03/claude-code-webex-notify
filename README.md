@@ -1,6 +1,7 @@
 # Claude Code WebEx Notifications
 
 Get notified on WebEx (or Slack, Discord, etc.) when Claude Code needs your input and you haven't responded within a configurable timeout.
+Very useful when you let Claude do its thing while you switched your attention to something else or stepped away from your laptop.
 
 ## How It Works
 
@@ -64,7 +65,7 @@ The installer will:
 1. Go to [WebEx Incoming Webhooks App](https://apphub.webex.com/applications/incoming-webhooks-cisco-systems-38054-23307-75252)
 2. Click **Connect** (sign in if prompted)
 3. Enter a name (e.g., "Claude Code Alerts")
-4. Select the Space where you want notifications
+4. Select the Space where you want notifications (tip: create a dedicated space for this)
 5. Click **Add**
 6. Copy the generated Webhook URL
 
