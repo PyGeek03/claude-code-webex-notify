@@ -61,7 +61,7 @@ The installer will:
 
 ## Getting a WebEx Webhook URL
 
-1. Go to [WebEx Incoming Webhooks App](https://apphub.webex.com/applications/incoming-webhooks-cisco-systems-38054-702377)
+1. Go to [WebEx Incoming Webhooks App](https://apphub.webex.com/applications/incoming-webhooks-cisco-systems-38054-23307-75252)
 2. Click **Connect** (sign in if prompted)
 3. Enter a name (e.g., "Claude Code Alerts")
 4. Select the Space where you want notifications
