@@ -1,4 +1,4 @@
-# Claude Code WebEx Notifications
+# Claude Code Notifications
 
 Get notified on WebEx (or Slack, Discord, etc.) when Claude Code needs your input and you haven't responded within a configurable timeout.
 Very useful when you let Claude do its thing while you switched your attention to something else or stepped away from your laptop.
