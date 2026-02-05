@@ -6,33 +6,29 @@ Very useful when you let Claude do its thing while you switched your attention t
 ## How It Works
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
+┌─────────────────────────────────────────────────────────-───────────────────┐
 │                              Permission Prompt                              │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  1. Claude Code shows permission prompt                                     │
-│                     │                                                       │
-│                     ▼                                                       │
+│                    │                                                        │
+│                    ▼                                                        │
 │  2. Notification hook fires ──► Creates marker file + starts 60s timer      │
 │                    │                                                        │
 │          ┌─────────┴─────────┐                                              │
 │          │                   │                                              │
 │          ▼                   ▼                                              │
-│   User responds         User doesn't respond                                │
+│   User responds      User doesn't respond                                   │
 │          │                   │                                              │
 │          ▼                   ▼                                              │
 │   PostToolUse hook      Timer expires                                       │
 │   deletes marker             │                                              │
 │          │                   ▼                                              │
-│          ▼              Marker still exists?                                │
+│          ▼           Marker still exists                                    │
 │   No notification            │                                              │
-│                    ┌─────────┴───────┐                                      │
-│                    │                 │                                      │
-│                   Yes                No                                     │
-│                    │                 │                                      │
-│                    ▼                 ▼                                      │
-│            Send WebEx         No notification                               │
-│            notification                                                     │
+│                              ▼                                              │
+│                          Send WebEx                                         │                                      │
+│                         notification                                        │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
