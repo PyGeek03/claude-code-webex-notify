@@ -4,13 +4,13 @@
 # Capture session_id from hook input via stdin (must be done before backgrounding)
 HOOK_INPUT=$(cat)
 SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id')
+MESSAGE=$(echo "$HOOK_INPUT" | jq -r '.message // "Claude Code needs your input to proceed"')
 
 # ============================================================================
 # CONFIGURATION - Edit these values
 # ============================================================================
 WEBHOOK_URL="YOUR_WEBHOOK_URL"  # Replace with your webhook URL
 TIMEOUT=60                       # Seconds to wait before sending notification
-MESSAGE="Claude Code needs your input to proceed"
 # ============================================================================
 
 MARKER_DIR="$HOME/.claude/waiting"
